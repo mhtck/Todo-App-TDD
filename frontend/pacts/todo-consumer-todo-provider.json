@@ -1,0 +1,95 @@
+{
+  "consumer": {
+    "name": "todo-consumer"
+  },
+  "provider": {
+    "name": "todo-provider"
+  },
+  "interactions": [
+    {
+      "description": "a GET request for a todo",
+      "providerState": "a todo exists",
+      "request": {
+        "method": "GET",
+        "path": "/",
+        "headers": {
+          "Accept": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.headers.Accept": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": 1,
+          "content": "Todo 111"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a POST request to create a todo",
+      "providerState": "provider allows todo creation",
+      "request": {
+        "method": "POST",
+        "path": "/create",
+        "headers": {
+          "Accept": "application/json; charset=utf-8",
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "content": "Todo 222"
+        },
+        "matchingRules": {
+          "$.headers.Accept": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": 2,
+          "content": "Todo 222"
+        },
+        "matchingRules": {
+          "$.headers.Content-Type": {
+            "match": "regex",
+            "regex": "application\\/json; *charset=utf-8"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
