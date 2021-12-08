@@ -96,7 +96,7 @@ Test-driven development (TDD) is a software development process relying on softw
   
   -Testing the service that brings all the todos from the database :
  
-         Get all todo service:
+   Get all todo service:
           ```
              getTodos() {
                 return axios.request({
@@ -111,8 +111,11 @@ Test-driven development (TDD) is a software development process relying on softw
                 });
             };
           ```
-          First( beforeEach ) we make a request to the service and then ( it ) we define what the response should be. If the answer is as expected, our test 
-          passes successfully.
+          
+   First( beforeEach ) we make a request to the service and then ( it ) we define what the response should be. If the 
+   answer is as expected, our test 
+   passes successfully.
+          
           ```
           describe("getTodos()", () => {
                 beforeEach((done) => {
