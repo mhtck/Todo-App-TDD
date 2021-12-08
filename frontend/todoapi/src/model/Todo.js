@@ -5,7 +5,7 @@ class Todo {
   }
 
   static validateContent(todo) {
-    if (typeof todo.content !== "string") {
+    if (typeof (todo.content) !== "string") {
       throw new Error(
         `Todo name must be a string! Invalid value: ${todo.content}`
       );

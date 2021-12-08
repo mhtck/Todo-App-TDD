@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo.views import getAll, create
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', getAll),
-    path('create', create)
+    path('create', csrf_exempt(create))
 ]
